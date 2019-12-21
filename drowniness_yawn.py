@@ -86,6 +86,7 @@ predictor = dlib.shape_predictor('shape_predictor_68_face_landmarks.dat')
 
 print("-> Starting Video Stream")
 vs = VideoStream(src=args["webcam"]).start()
+#vs= VideoStream(usePiCamera=True).start()       //For Raspberry Pi
 time.sleep(1.0)
 
 while True:
