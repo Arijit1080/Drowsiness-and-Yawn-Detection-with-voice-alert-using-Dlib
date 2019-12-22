@@ -56,7 +56,7 @@ def lip_distance(shape):
     top_lip = shape[50:53]
     top_lip = np.concatenate((top_lip, shape[61:64]))
 
-    low_lip = shape[61:64]
+    low_lip = shape[56:59]
     low_lip = np.concatenate((low_lip, shape[65:68]))
 
     top_mean = np.mean(top_lip, axis=0)
