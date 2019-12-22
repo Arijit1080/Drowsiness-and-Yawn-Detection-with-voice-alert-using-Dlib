@@ -1,4 +1,4 @@
-# python drowniness_yawn.py --webcam webcam_index
+#python drowniness_yawn.py --webcam webcam_index
 
 from scipy.spatial import distance as dist
 from imutils.video import VideoStream
@@ -73,16 +73,16 @@ args = vars(ap.parse_args())
 
 EYE_AR_THRESH = 0.3
 EYE_AR_CONSEC_FRAMES = 30
-YAWN_THRESH = 10
+YAWN_THRESH = 20
 alarm_status = False
 alarm_status2 = False
 saying = False
 COUNTER = 0
 
 print("-> Loading the predictor and detector...")
-detector = dlib.get_frontal_face_detector()
+#detector = dlib.get_frontal_face_detector()
+detector = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")    #Faster but less accurate
 predictor = dlib.shape_predictor('shape_predictor_68_face_landmarks.dat')
-#detector = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_default.xml")    #Faster but less accurate
 
 
 print("-> Starting Video Stream")
@@ -96,10 +96,15 @@ while True:
     frame = imutils.resize(frame, width=450)
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
-    rects = detector(gray, 0)
+    #rects = detector(gray, 0)
+    rects = detector.detectMultiScale(gray, scaleFactor=1.1, 
+		minNeighbors=5, minSize=(30, 30),
+		flags=cv2.CASCADE_SCALE_IMAGE)
 
-    for rect in rects:
-
+    #for rect in rects:
+    for (x, y, w, h) in rects:
+        rect = dlib.rectangle(int(x), int(y), int(x + w),int(y + h))
+        
         shape = predictor(gray, rect)
         shape = face_utils.shape_to_np(shape)
 
