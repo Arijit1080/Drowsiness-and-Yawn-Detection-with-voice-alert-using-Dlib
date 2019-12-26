@@ -1,6 +1,6 @@
-# Drowniness and Yawn detection with voice alert using Dlib
+# Drowsiness and Yawn detection with voice alert using Dlib
 
-Simple code in python to detect Drowniness and Yawn and alert the user using Dlib.
+Simple code in python to detect Drowsiness and Yawn and alert the user using Dlib.
 
 ## Dependencies
 
@@ -15,7 +15,7 @@ Simple code in python to detect Drowniness and Yawn and alert the user using Dli
 ## Run 
 
 ```
-Python3 drowniness_yawn.py -- webcam 0		//For external webcam, use the webcam number accordingly
+Python3 drowsiness_yawn.py -- webcam 0		//For external webcam, use the webcam number accordingly
 ```
 
 ## Setups
