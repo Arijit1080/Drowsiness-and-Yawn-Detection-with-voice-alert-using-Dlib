@@ -67,13 +67,13 @@ def lip_distance(shape):
 
 
 ap = argparse.ArgumentParser()
-ap.add_argument("-w", "--webcam", type=int, default=0,
+ap.add_argument("-w", "--webcam", type=int, default=-1,
                 help="index of webcam on system")
 args = vars(ap.parse_args())
 
 EYE_AR_THRESH = 0.3
-EYE_AR_CONSEC_FRAMES = 30
-YAWN_THRESH = 20
+EYE_AR_CONSEC_FRAMES = 20
+YAWN_THRESH = 17
 alarm_status = False
 alarm_status2 = False
 saying = False
@@ -86,8 +86,9 @@ predictor = dlib.shape_predictor('shape_predictor_68_face_landmarks.dat')
 
 
 print("-> Starting Video Stream")
-vs = VideoStream(src=args["webcam"]).start()
+# vs = VideoStream(src=args["webcam"]).start()
 #vs= VideoStream(usePiCamera=True).start()       //For Raspberry Pi
+vs = VideoStream(src='rtsp://192.168.0.100:8080/h264_ulaw.sdp').start()
 time.sleep(1.0)
 
 while True:
