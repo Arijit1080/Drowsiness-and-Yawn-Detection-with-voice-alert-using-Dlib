@@ -19,14 +19,16 @@ def alarm(msg):
 
     while alarm_status:
         print('call')
-        s = 'espeak "'+msg+'"'
-        os.system(s)
+#        s = 'espeak "'+msg+'"'
+        print(msg)
+#        os.system(s)
 
     if alarm_status2:
         print('call')
         saying = True
-        s = 'espeak "' + msg + '"'
-        os.system(s)
+ #       s = 'espeak "' + msg + '"'
+        print(msg)
+ #       os.system(s)
         saying = False
 
 def eye_aspect_ratio(eye):
@@ -72,7 +74,7 @@ ap.add_argument("-w", "--webcam", type=int, default=-1,
 args = vars(ap.parse_args())
 
 EYE_AR_THRESH = 0.3
-EYE_AR_CONSEC_FRAMES = 20
+EYE_AR_CONSEC_FRAMES = 30
 YAWN_THRESH = 17
 alarm_status = False
 alarm_status2 = False
