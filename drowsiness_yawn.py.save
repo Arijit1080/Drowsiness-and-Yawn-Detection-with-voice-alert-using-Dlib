@@ -26,7 +26,10 @@ def alarm(msg):
     if alarm_status2:
         print('call')
         saying = True
-        s = 'espeak "' + msg + '"2>/dev/null'
+        s = 'espeak "' + msg + '"
+
+
+'
         print(msg)
         os.system(s)
         saying = False
