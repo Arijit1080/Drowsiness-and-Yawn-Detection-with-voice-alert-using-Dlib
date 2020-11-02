@@ -11,6 +11,8 @@ import time
 import dlib
 import cv2
 import os
+import pyttsx3
+engine=pyttsx3.init()
 
 def alarm(msg):
     global alarm_status
@@ -19,16 +21,16 @@ def alarm(msg):
 
     while alarm_status:
         print('call')
-        s = 'espeak "'+msg+'" 2>/dev/null'
+        pyttsx3.speak(msg)
         print(msg)
-        os.system(s)
+       
 
     if alarm_status2:
         print('call')
         saying = True
-        s = 'espeak "' + msg + '"2>/dev/null'
+        pyttsx3.speak(msg)
         print(msg)
-        os.system(s)
+        
         saying = False
 
 def eye_aspect_ratio(eye):
@@ -75,7 +77,7 @@ args = vars(ap.parse_args())
 
 EYE_AR_THRESH = 0.3
 EYE_AR_CONSEC_FRAMES = 30
-YAWN_THRESH = 17
+YAWN_THRESH = 20
 alarm_status = False
 alarm_status2 = False
 saying = False
